@@ -6,7 +6,7 @@
 /*   By: sanaggar <sanaggar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:56:50 by sanaggar          #+#    #+#             */
-/*   Updated: 2023/05/23 19:03:16 by sanaggar         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:43:34 by sanaggar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ char    *read_and_stash(int fd, char *stash)
     
     buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     if (!buff)
+    {
+        free(buff);
         return (NULL);
+    }
     //ft_memset(buff, 0, (BUFFER_SIZE + 1));
     
     rdb = 1;
@@ -46,9 +49,11 @@ char    *ft_line(char   *stash)
     i = 0;
     
     if (!stash[i])
+    {
+        free(stash); //A VERIF
         return (NULL);
+    }
 
-    
     while (stash[i] && stash[i] != '\n')
         i++;
     str = malloc(sizeof(char) * (i + 2));
@@ -72,7 +77,7 @@ char    *ft_line(char   *stash)
 
 char    *new_stash(char *stash)
 {
-    int        i;
+    int     i;
     int     j;
     char    *str;
     
@@ -87,7 +92,10 @@ char    *new_stash(char *stash)
     
     str = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
     if (!str)
+    {
+        free(str);
         return (NULL);
+    }
         
     i++;
     j = 0;
@@ -105,7 +113,7 @@ char    *new_stash(char *stash)
 char *get_next_line(int fd)
 {
     char        *line;   
-    static char *stash = "";
+    static char *stash;
     
 
     //stash = malloc(sizeof(char) * BUFFER_SIZE + 1);
