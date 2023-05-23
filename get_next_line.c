@@ -6,7 +6,7 @@
 /*   By: sanaggar <sanaggar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:56:50 by sanaggar          #+#    #+#             */
-/*   Updated: 2023/05/23 20:43:34 by sanaggar         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:46:55 by sanaggar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char    *ft_line(char   *stash)
     
     if (!stash[i])
     {
-        free(stash); //A VERIF
+        //free(stash); //A VERIF
         return (NULL);
     }
 
