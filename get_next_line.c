@@ -6,7 +6,7 @@
 /*   By: sanaggar <sanaggar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:56:50 by sanaggar          #+#    #+#             */
-/*   Updated: 2023/05/23 17:52:13 by sanaggar         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:03:16 by sanaggar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,12 @@ char    *new_stash(char *stash)
 char *get_next_line(int fd)
 {
     char        *line;   
-    static char *stash;
+    static char *stash = "";
     
+
+    //stash = malloc(sizeof(char) * BUFFER_SIZE + 1);
+    if (stash == NULL)
+        stash = "";
     if (fd < 0 || BUFFER_SIZE <= 0)
         return (NULL);
     stash = read_and_stash(fd, stash);
