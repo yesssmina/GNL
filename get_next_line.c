@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanaggar <sanaggar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: snaggara <snaggara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:56:50 by sanaggar          #+#    #+#             */
-/*   Updated: 2023/05/24 22:41:27 by sanaggar         ###   ########.fr       */
+/*   Updated: 2023/05/25 01:07:41 by snaggara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ char    *read_and_stash(int fd, char *stash)
 {
     char        *buff;
     int         rdb;
+	char		*tmp;
     
     buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     if (!buff)
-    {
-        free(buff);
         return (NULL);
-    }
     //ft_memset(buff, 0, (BUFFER_SIZE + 1));
     
     rdb = 1;
@@ -35,7 +33,9 @@ char    *read_and_stash(int fd, char *stash)
             return (NULL);
         }
         buff[rdb] = '\0';
-        stash = ft_strjoin(stash, buff);
+		tmp = ft_strjoin(stash, buff);
+		free(stash);
+        stash = tmp;
     }
     free(buff);
     return (stash);
@@ -117,8 +117,11 @@ char *get_next_line(int fd)
     
 
     //stash = malloc(sizeof(char) * BUFFER_SIZE + 1);
-    if (stash == NULL)
-        stash = "";
+    if (!stash)
+	{
+		stash = malloc(sizeof(char));
+        stash[0] = '\0';
+	}
     if (fd < 0 || BUFFER_SIZE <= 0)
         return (NULL);
     stash = read_and_stash(fd, stash);
@@ -142,7 +145,8 @@ int main()
     line = get_next_line(fd);
     while (line)
     {
-        printf("%d%s\n", i, line);
+        //printf("%d%s\n", i, line);
+		printf("%s", line);
         free(line);
         line = get_next_line(fd);
         i++;
