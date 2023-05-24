@@ -1,4 +1,4 @@
-Coucou moi c'est Sam
-Salut Moi c'est John?
-Hey, MOI c'est Henry.....
-hhhhh.....
+Coucou moi c'est Sam,
+Salut, MOI c'est John,
+Hey, moi c'est Henry;
+hhhhh
