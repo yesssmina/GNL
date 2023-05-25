@@ -6,7 +6,7 @@
 /*   By: sanaggar <sanaggar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:35:43 by sanaggar          #+#    #+#             */
-/*   Updated: 2023/05/24 20:36:55 by sanaggar         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:31:53 by sanaggar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	{
 		s1 = malloc(sizeof(char));
 		s1[0] = '\0';
-		printf("Heyy");
 	}
 	if (!s2)
 		return (NULL);
@@ -47,18 +46,12 @@ char	*ft_strjoin(char *s1, char *s2)
 		i++;
 	}
 	while (s2[j])
-	{
-		str[i++] = (char)s2[j];
-		j++;
-	}
-	//free(s2);
-	//free(s1);
+		str[i++] = (char)s2[j++];
 	str[i] = '\0';
 	return (str);
-
 }
 
-char	*ft_strchr(char	*s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
