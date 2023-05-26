@@ -6,7 +6,7 @@
 /*   By: sanaggar <sanaggar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 18:56:50 by sanaggar          #+#    #+#             */
-/*   Updated: 2023/05/25 21:39:40 by sanaggar         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:35:40 by sanaggar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char	*new_stash(char *stash)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	stash;
+	static char	*stash;
 
 	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 		return (NULL);
