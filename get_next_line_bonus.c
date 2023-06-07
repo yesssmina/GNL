@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanaggar <sanaggar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 18:56:50 by sanaggar          #+#    #+#             */
-/*   Updated: 2023/06/07 17:40:53 by sanaggar         ###   ########.fr       */
+/*   Created: 2023/05/26 17:52:35 by sanaggar          #+#    #+#             */
+/*   Updated: 2023/06/07 17:41:29 by sanaggar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*read_and_stash(int fd, char *stash)
 {
@@ -94,43 +94,49 @@ char	*new_stash(char *stash)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*stash = NULL;
+	static char	*stash[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (!stash)
+	if (!stash[fd])
 	{
-		stash = malloc(sizeof(char));
+		stash[fd] = malloc(sizeof(char));
 		if (!stash)
 			return (NULL);
-		stash[0] = '\0';
+		(stash[fd])[0] = '\0';
 	}
-	stash = read_and_stash(fd, stash);
-	if (!stash)
+	stash[fd] = read_and_stash(fd, stash[fd]);
+	if (!stash[fd])
 		return (NULL);
-	line = ft_line(stash);
-	stash = new_stash(stash);
+	line = ft_line(stash[fd]);
+	stash[fd] = new_stash(stash[fd]);
 	return (line);
 }
 
-/*int main()
+/*
+int main()
 {
     int     fd;
+	int		fd1;
     int     i;
     char    *line;
+	char    *line1;
 
     i = 1;
     fd = open("./test.txt", O_RDONLY);
+	fd1 = open("./test2.txt", O_RDONLY);
     line = get_next_line(fd);
+	line1 = get_next_line(fd1);
     while (line)
     {
-        //printf("%d%s\n", i, line);
-		printf("%d%s\n", i, line);
+        printf("%d%s%s\n", i, line, line1);
+		free(line1);
         free(line);
         line = get_next_line(fd);
+		line1 = get_next_line(fd1);
         i++;
     }
+	free(line1);
     free(line);
     close(fd);
-    //system("leaks a.out");
 }*/

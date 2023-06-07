@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanaggar <sanaggar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 13:35:43 by sanaggar          #+#    #+#             */
-/*   Updated: 2023/05/26 19:53:15 by sanaggar         ###   ########.fr       */
+/*   Created: 2023/05/26 17:54:20 by sanaggar          #+#    #+#             */
+/*   Updated: 2023/05/26 19:52:04 by sanaggar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char	*s)
 {
