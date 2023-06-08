@@ -6,7 +6,7 @@
 /*   By: sanaggar <sanaggar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 17:52:35 by sanaggar          #+#    #+#             */
-/*   Updated: 2023/06/07 17:41:29 by sanaggar         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:38:03 by sanaggar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	*get_next_line(int fd)
 	if (!stash[fd])
 	{
 		stash[fd] = malloc(sizeof(char));
-		if (!stash)
+		if (!stash[fd])
 			return (NULL);
 		(stash[fd])[0] = '\0';
 	}
